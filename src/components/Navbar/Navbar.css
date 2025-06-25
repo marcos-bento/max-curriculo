@@ -1,0 +1,34 @@
+.navbar {
+  background-color: white;
+  height: 115px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--padding-padrão);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-logo {
+  color: var(--azul-principal);
+  font-size: 32px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.novo-texto {
+  color: var(--azul-principal);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.icone {
+  color: var(--azul-principal);
+  font-size: 32px;
+  cursor: pointer;
+}

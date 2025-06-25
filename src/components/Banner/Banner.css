@@ -1,0 +1,69 @@
+.banner-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 200px);
+  gap: 65px;
+  padding: 80px var(--padding-padrão);
+}
+
+.banner-item {
+  background-color: white;
+  border-radius: 70px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: skewX(-20deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-size: 18px;
+  text-align: center;
+  position: relative;
+}
+
+/* Corrige texto interno para não ficar torto */
+.banner-item > * {
+  transform: skewX(20deg);
+}
+
+.banner-item-texto{
+    width: 50%;
+}
+
+.banner-item-texto.texto-grande{
+    width: 20%;
+}
+
+.banner-item-text-destaq{
+    color: var(--azul-principal);
+    font-weight: bold;
+    font-style: italic;
+}
+
+.banner-item.grande {
+  grid-column: span 2;
+  grid-row: span 2;
+  flex-direction: row;
+  width: 90%;
+  justify-self: flex-end;
+}
+
+.banner-item.pequeno.top {
+  grid-column: 3;
+  grid-row: 1;
+  width: 80%;
+  justify-self: right;
+}
+
+.banner-item.pequeno.bottom {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.banner-img {
+  max-width: 60%;
+  height: auto;
+  max-height: 180%;
+  position: relative;
+  top: 23%;
+  margin-bottom: 15px;
+}
