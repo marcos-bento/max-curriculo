@@ -1,0 +1,29 @@
+.modelos-container {
+  border: 3px solid #9F9F9F;
+  border-radius: 20px;
+  padding: 40px 0;
+  margin: 60px var(--padding-padrão);
+  text-align: center;
+}
+
+.modelos-titulo {
+    margin-top: -80px;
+    padding-bottom: 20px;
+}
+
+.modelos-galeria {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.modelos-galeria img {
+  width: 200px;
+  height: auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.4s ease;
+}
+
+.modelos-galeria img:hover {
+  transform: scale(1.50);
+}

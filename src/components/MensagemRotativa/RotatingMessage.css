@@ -1,0 +1,36 @@
+.rotating-message-wrapper {
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  overflow: hidden;
+  margin-top: 2rem;
+  margin-left: var(--padding-padrão);
+  margin-right: var(--padding-padrão);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.rotating-message-container {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  padding-left: 100%; /* Faz o texto começar fora da tela à direita */
+  animation: scroll-text 15s linear infinite;
+}
+
+.rotating-text {
+  font-size: 16px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
