@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
 import { FaFacebookF, FaLinkedinIn, FaYoutube, FaWhatsapp } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -19,8 +20,8 @@ function Footer() {
 
       <div className="footer-coluna-direita">
         <h3 className="footer-titulo">Saiba mais</h3>
-        <a href="#" className="footer-link">Sobre o projeto</a>
-        <a href="#" className="footer-link">Sobre o desenvolvedor</a>
+        <Link to="/sobreProjeto" className="footer-link">Sobre o projeto</Link>
+        <Link to="/sobreDev" className="footer-link">Sobre o desenvolvedor</Link>
       </div>
     </footer>
   );

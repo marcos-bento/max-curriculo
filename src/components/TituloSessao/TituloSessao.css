@@ -1,0 +1,17 @@
+.titulo-sessao {
+  background-color: var(--azul-principal, #1A4D9A);
+  height: 94px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 100%;
+  margin: 3rem 0;
+}
+
+.titulo-sessao h2 {
+  font-size: 24px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+}
