@@ -10,6 +10,7 @@ function SobreProjeto() {
       <div style={{ paddingTop:"50px" }}><Titulo texto={"Sobre o Projeto"}/></div>
       <Footer/>
     </div>
+    
   );
 }
 
