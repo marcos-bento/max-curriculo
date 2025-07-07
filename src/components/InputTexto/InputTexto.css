@@ -1,0 +1,21 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 0 calc(var(--padding-padrão)*3);
+}
+
+.input-label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #1A4D9A;
+}
+
+.input-campo {
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
