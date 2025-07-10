@@ -18,7 +18,7 @@ function Home() {
       <RotatingMessage/>
       <Vantagens/>
       <Modelos/>
-      <div style={{ display: "flex", justifyContent: "center", paddingBottom:"50px" }}><Botao texto="Faça seu currículo agora!" onClick={() => navigate("/form")} /></div>
+      <div style={{ display: "flex", justifyContent: "center", paddingBottom:"50px" }}><Botao texto="Faça seu currículo agora!" onClick={() => navigate("/selecionarModelo")} /></div>
       <Footer/>
     </div>
   );

@@ -7,7 +7,7 @@ function Navbar({ isHome }) {
   const navigate = useNavigate();
 
   const redirecionar = () => {
-    navigate(isHome ? "/form" : "/");
+    navigate(isHome ? "/selecionarModelo" : "/");
   };
 
   return (

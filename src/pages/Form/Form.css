@@ -1,0 +1,54 @@
+.form-section {
+  padding: 40px var(--padding-padrao);
+}
+
+.experiencia-bloco {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.btn-remover-experiencia {
+  background-color: #FF0000;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-adicionar-experiencia {
+  background-color: #1A4D9A;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-centro {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.btn-gerar-curriculo {
+  background-color: #1A4D9A;
+  color: white;
+  padding: 10px 25px;
+  font-size: 16px;
+  border: 2px solid white;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+.btn-gerar-curriculo:hover {
+  background-color: #153b78;
+}
+
+

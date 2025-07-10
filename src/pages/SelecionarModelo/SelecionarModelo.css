@@ -1,0 +1,41 @@
+.modelo-container {
+  padding: 60px var(--padding-padrao);
+  text-align: center;
+}
+
+.modelo-container-titulo{
+    padding: 60px 0 10px 0;
+}
+
+.modelos-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+
+.modelo-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  cursor: pointer;
+  width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.modelo-card:hover {
+  transform: scale(1.05);
+}
+
+.modelo-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.modelo-card p {
+  margin-top: 10px;
+  font-weight: bold;
+}

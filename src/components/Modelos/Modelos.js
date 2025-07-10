@@ -8,7 +8,7 @@ import Titulo from "../Titulo/Titulo";
 function Modelos() {
   return (
     <div className="modelos-container">
-        <div className="modelos-titulo"><Titulo texto={"Escolha um modelo:"}/></div>
+        <div className="modelos-titulo"><Titulo texto={"Temos vários modelos:"}/></div>
       <div className="modelos-galeria">
         <img src={modelo1} alt="Modelo 1" />
         <img src={modelo2} alt="Modelo 2" />

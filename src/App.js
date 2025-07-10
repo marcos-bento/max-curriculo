@@ -5,6 +5,10 @@ import Form from './pages/Form/Form';
 import Preview from './pages/Preview/Preview';
 import SobreProjeto from './pages/sobreProjeto/sobreProjeto';
 import SobreDev from './pages/sobreDev/sobreDev';
+import { ToastContainer } from 'react-toastify';
+import SelecionarModelo from './pages/SelecionarModelo/SelecionarModelo';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   return (
@@ -15,7 +19,9 @@ function App() {
         <Route path="/preview" element={<Preview />} />
         <Route path="/sobreProjeto" element={<SobreProjeto />} />
         <Route path="/sobreDev" element={<SobreDev />} />
+        <Route path="/selecionarModelo" element={<SelecionarModelo />} />
       </Routes>
+      <ToastContainer />
     </Router>
   );
 }
