@@ -1,7 +1,7 @@
 .banner-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 200px);
+  grid-template-rows: repeat(2, 170px);
   gap: 65px;
   padding: 80px var(--padding-padrão);
 }
