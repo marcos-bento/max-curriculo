@@ -1,0 +1,49 @@
+.modelo0-preview {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 12pt;
+  width: 794px; /* equivalente a A4 em px @ 96dpi */
+  padding: 40px 20px;
+  margin: 40px auto;
+  background-color: white;
+  color: #000;
+  border: 1px solid #ccc;
+  line-height: 1.4;
+}
+
+.titulo-nome {
+  font-size: 18pt;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.bloco-info p {
+  margin: 2px 0;
+}
+
+.bloco-sessao {
+  margin-top: 30px;
+}
+
+.bloco-sessao h2 {
+  font-size: 14pt;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.bloco-item {
+  margin-bottom: 15px;
+}
+
+.item-titulo {
+  font-weight: bold;
+  font-size: 12pt;
+  margin-bottom: 4px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+ul li {
+  margin-bottom: 4px;
+}

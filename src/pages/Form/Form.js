@@ -10,15 +10,21 @@ import React, { useEffect } from 'react';
 import "./Form.css";
 import gerarCurriculoPDF from '../../utils/gerarCurriculoPDF';
 import { toast } from 'react-toastify';
+import Modelo0Preview from '../../components/Preview/Modelos/Modelo0Preview';
+
 
 function Form() {
+  const [modeloSelecionado, setModeloSelecionado] = React.useState("modelo0");
+
   useEffect(() => {
-    window.scrollTo(0, 0); // força rolagem para o topo ao entrar na página
-    const modeloSelecionado = localStorage.getItem("modeloSelecionado");
+    const modelo = localStorage.getItem("modeloSelecionado") || "modelo0";
+    setModeloSelecionado(modelo);
+    window.scrollTo(0, 0);
   }, []);
 
   // Inicializa o hook do formulário
-  const { register, handleSubmit, control } = useForm();
+  const { register, handleSubmit, control, watch } = useForm();
+  const dadosForm = watch();
 
   // Controle dinâmico dos campos de EXPERIÊNCIA
   const { fields, append, remove } = useFieldArray({
@@ -71,6 +77,15 @@ function Form() {
           <InputTexto label="Telefone" name="telefone" register={register} required />
           <InputTexto label="Cidade" name="cidade" register={register} required />
           <InputTexto label="Cargo desejado" name="cargo" register={register} required />
+          {modeloSelecionado === "modelo1" && (
+            <>
+              <div style={{ padding: "40px var(--padding-padrao)" }}>
+                <InputTexto label="LinkedIn" name="linkedin" register={register} />
+                <InputTexto label="Portfólio ou Website" name="portfolio" register={register} />
+                <InputTexto label="URL da Foto de Perfil" name="fotoPerfil" register={register} />
+              </div>
+            </>
+          )}
         </div>
 
         {/* Seção: Experiência Profissional */}
@@ -149,6 +164,13 @@ function Form() {
         </div>
 
       </form>
+      {modeloSelecionado === "modelo0" && (
+        <div className="preview-container">
+          <h2 style={{ textAlign: "center", marginTop: "40px" }}>Prévia do Currículo</h2>
+          <Modelo0Preview dados={dadosForm} />
+        </div>
+      )}
+
       {/* Rodapé da página */}
       <Footer />
     </div>

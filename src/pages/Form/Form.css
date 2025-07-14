@@ -51,4 +51,9 @@
   background-color: #153b78;
 }
 
-
+.preview-container {
+  padding: 40px var(--padding-padrao);
+  border-top: 1px solid #ddd;
+  width: 1000px;
+  margin: auto;
+}
