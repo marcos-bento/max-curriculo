@@ -15,12 +15,31 @@ import Modelo0Preview from '../../components/Preview/Modelos/Modelo0Preview';
 
 function Form() {
   const [modeloSelecionado, setModeloSelecionado] = React.useState("modelo0");
+  const [fotoBase64, setFotoBase64] = React.useState(null);
 
   useEffect(() => {
     const modelo = localStorage.getItem("modeloSelecionado") || "modelo0";
     setModeloSelecionado(modelo);
     window.scrollTo(0, 0);
   }, []);
+
+  const handleFotoChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFotoBase64(reader.result); // salva como base64
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleRemoverFoto = () => {
+    setFotoBase64(null);
+    // Também limpa o input file manualmente
+    const input = document.getElementById("foto-perfil-input");
+    if (input) input.value = "";
+  };
 
   // Inicializa o hook do formulário
   const { register, handleSubmit, control, watch } = useForm();
@@ -46,7 +65,7 @@ function Form() {
 
   // Manipula o envio do formulário
   const onSubmit = (dados) => {
-    gerarCurriculoPDF(dados);
+    gerarCurriculoPDF({ ...dados, fotoBase64 }); // <- adiciona imagem ao objeto
     toast.success("Currículo gerado com sucesso!");
   };
 
@@ -82,7 +101,29 @@ function Form() {
               <div style={{ padding: "40px var(--padding-padrao)" }}>
                 <InputTexto label="LinkedIn" name="linkedin" register={register} />
                 <InputTexto label="Portfólio ou Website" name="portfolio" register={register} />
-                <InputTexto label="URL da Foto de Perfil" name="fotoPerfil" register={register} />
+                <div className="form-section">
+                  <label style={{ fontWeight: "bold", display: "block", marginBottom: "10px", textAlign: "center" }}>
+                    Foto de Perfil (opcional)
+                  </label>
+
+                  <div className="foto-upload-container">
+                    {fotoBase64 && (
+                      <>
+                        <img src={fotoBase64} alt="Prévia da Foto" className="foto-preview" />
+                        <button type="button" className="btn-remover-foto" onClick={handleRemoverFoto}>
+                          Remover Foto
+                        </button>
+                      </>
+                    )}
+                    <input
+                      type="file"
+                      id="foto-perfil-input"
+                      accept="image/*"
+                      onChange={handleFotoChange}
+                      className="input-foto"
+                    />
+                  </div>
+                </div>
               </div>
             </>
           )}

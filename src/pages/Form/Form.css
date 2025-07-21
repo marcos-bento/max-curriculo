@@ -57,3 +57,55 @@
   width: 1000px;
   margin: auto;
 }
+
+.foto-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.input-foto {
+  background-color: #1A4D9A;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.input-foto::file-selector-button {
+  background-color: #1A4D9A;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.foto-preview {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 75px;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+  border: 3px solid #1A4D9A;
+}
+
+.btn-remover-foto {
+  background-color: #cc0000;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+  transition: background-color 0.3s ease;
+}
