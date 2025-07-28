@@ -98,9 +98,14 @@ function Form() {
           <InputTexto label="Cargo desejado" name="cargo" register={register} required />
           {modeloSelecionado === "modelo1" && (
             <>
+              <InputTexto label="Descrição profissional" name="descricao" register={register} />
+              <InputTexto label="Idade ou Data de Nascimento (opcional)" name="idade" register={register} />
+              <InputTexto label="Estado Civil (opcional)" name="estadoCivil" register={register} />
+
               <div style={{ padding: "40px var(--padding-padrao)" }}>
                 <InputTexto label="LinkedIn" name="linkedin" register={register} />
                 <InputTexto label="Portfólio ou Website" name="portfolio" register={register} />
+
                 <div className="form-section">
                   <label style={{ fontWeight: "bold", display: "block", marginBottom: "10px", textAlign: "center" }}>
                     Foto de Perfil (opcional)

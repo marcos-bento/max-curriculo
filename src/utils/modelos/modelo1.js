@@ -9,13 +9,8 @@ export default async function gerarModelo1(dados) {
   const pageWidth = doc.internal.pageSize.getWidth();
   let y = 10;
   const mailImg = await loadImageAsBase64(mailIcon);
-  doc.addImage(mailImg, 'PNG', 22, y, 5, 5);
-
   const foneImg = await loadImageAsBase64(foneIcon);
-  doc.addImage(foneImg, 'PNG', 22, y, 5, 5);
-
   const pinImg = await loadImageAsBase64(pinIcon);
-  doc.addImage(pinImg, 'PNG', 22, y, 5, 5);
 
   // TOPO (imagem + nome + descrição)
   doc.setFillColor(30, 50, 90); // Azul escuro
@@ -115,6 +110,22 @@ export default async function gerarModelo1(dados) {
   doc.setTextColor(0, 0, 0);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(14);
+
+  // Campos adicionais: idade, estado civil, cargo desejado
+  if (dados.nascimento) {
+    doc.text(`Nascimento: ${dados.nascimento}`, rightStart, yRight);
+    yRight += 6;
+  }
+  if (dados.estadoCivil) {
+    doc.text(`Estado Civil: ${dados.estadoCivil}`, rightStart, yRight);
+    yRight += 6;
+  }
+  if (dados.cargo) {
+    doc.text(`Cargo Desejado: ${dados.cargo}`, rightStart, yRight);
+    yRight += 8;
+  }
+
+  doc.setFontSize(14);
   doc.text("EXPERIÊNCIA PROFISSIONAL", rightStart, yRight);
   yRight += 8;
 
@@ -122,12 +133,19 @@ export default async function gerarModelo1(dados) {
   doc.setFontSize(12);
 
   dados.experiencias?.forEach((exp) => {
-    doc.text(`${exp.cargo} - ${exp.empresa}`, rightStart, yRight);
-    yRight += 6;
-    doc.text(`${exp.periodo}`, rightStart, yRight);
-    yRight += 6;
-    doc.text(`${exp.descricao}`, rightStart, yRight);
-    yRight += 10;
+    const expLines = [
+      `${exp.cargo} - ${exp.empresa}`,
+      `${exp.periodo}`,
+      `${exp.descricao}`
+    ];
+    expLines.forEach((line) => {
+      const lines = doc.splitTextToSize(line, 100);
+      lines.forEach((l) => {
+        doc.text(l, rightStart, yRight);
+        yRight += 5;
+      });
+    });
+    yRight += 4;
   });
 
   doc.save("curriculo-modelo1.pdf");
