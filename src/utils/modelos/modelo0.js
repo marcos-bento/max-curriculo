@@ -13,7 +13,7 @@ const gerarCurriculoPDF  = (dados) => {
   doc.setFont("helvetica", "normal");
   doc.text(`Email: ${dados.email}`, 20, 30);
   doc.text(`Telefone: ${dados.telefone}`, 20, 36);
-  doc.text(`Cidade: ${dados.cidade}`, 20, 42);
+  doc.text(`Endereço: ${dados.cidade}`, 20, 42);
   doc.text(`Cargo desejado: ${dados.cargo}`, 20, 48);
 
   let y = 60;
