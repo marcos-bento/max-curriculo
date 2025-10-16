@@ -1,6 +1,8 @@
 - Modelo 0:
 Adicionar campo Objetivo
 Ajustar campo descrição dos cargos (Adicionar Quebra linha)
+Mudar o nome para Modelo Simples
+Criar uma nova versão: Inserir pontos de "linha do tempo" no trabalho
 
 - Modelo 0 Preview:
 Igualar a margem
