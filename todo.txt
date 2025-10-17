@@ -1,5 +1,5 @@
 - Modelo 0:
-Adicionar campo Objetivo
+Adicionar campo Objetivo (Feito)
 Ajustar campo descrição dos cargos (Adicionar Quebra linha)
 Mudar o nome para Modelo Simples
 Criar uma nova versão: Inserir pontos de "linha do tempo" no trabalho

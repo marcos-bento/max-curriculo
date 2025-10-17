@@ -94,11 +94,11 @@ function Form() {
           <InputTexto label="Nome completo" name="nome" register={register} required />
           <InputTexto label="Email" name="email" type="email" register={register} required />
           <InputTexto label="Telefone" name="telefone" register={register} required />
-          <InputTexto label="Cidade" name="cidade" register={register} required />
+          <InputTexto label="Endereço" name="cidade" register={register} required />
           <InputTexto label="Cargo desejado" name="cargo" register={register} required />
+          <InputTexto label="Descrição profissional" name="descricao" register={register} />
           {modeloSelecionado === "modelo1" && (
             <>
-              <InputTexto label="Descrição profissional" name="descricao" register={register} />
               <InputTexto label="Idade ou Data de Nascimento (opcional)" name="idade" register={register} />
               <InputTexto label="Estado Civil (opcional)" name="estadoCivil" register={register} />
 

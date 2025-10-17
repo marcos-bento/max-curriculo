@@ -1,45 +1,74 @@
 import React from 'react';
 import './Modelo0Preview.css';
 
-function Modelo0Preview({ dados }) {
+function Modelo0Preview({ dados = {} }) {
+  const {
+    nome = '',
+    email = '',
+    telefone = '',
+    cidade = '',
+    cargo = '',
+    descricao = '',
+    experiencias = [],
+    formacoes = [],
+    habilidades = []
+  } = dados;
+
+  const temTexto = (t) => typeof t === 'string' && t.trim().length > 0;
+
   return (
     <div className="modelo0-preview">
-      <h1 className="titulo-nome">{dados.nome}</h1>
+      <h1 className="titulo-nome">{nome || 'Seu nome'}</h1>
 
       <div className="bloco-info">
-        <p>Email: {dados.email}</p>
-        <p>Telefone: {dados.telefone}</p>
-        <p>Cidade: {dados.cidade}</p>
-        <p>Cargo desejado: {dados.cargo}</p>
+        <p>Email: {email || '—'}</p>
+        <p>Telefone: {telefone || '—'}</p>
+        <p>Cidade: {cidade || '—'}</p>
+        <p>Cargo desejado: {cargo || '—'}</p>
       </div>
+
+      {/* NOVO BLOCO: Descrição profissional */}
+      {temTexto(descricao) && (
+        <div className="bloco-sessao">
+          <h2>Descrição profissional</h2>
+          <p className="texto-longo">{descricao}</p>
+        </div>
+      )}
 
       <div className="bloco-sessao">
         <h2>Experiência Profissional</h2>
-        {dados.experiencias?.map((exp, index) => (
+        {experiencias.length === 0 && <p>—</p>}
+        {experiencias.map((exp, index) => (
           <div key={index} className="bloco-item">
-            <p className="item-titulo">{exp.cargo} - {exp.empresa}</p>
-            <p>{exp.periodo}</p>
-            <p>{exp.descricao}</p>
+            <p className="item-titulo">
+              {(exp?.cargo || '')}{exp?.empresa ? ` - ${exp.empresa}` : ''}
+            </p>
+            <p>{exp?.periodo || ''}</p>
+            {temTexto(exp?.descricao) && <p className="texto-longo">{exp.descricao}</p>}
           </div>
         ))}
       </div>
 
       <div className="bloco-sessao">
         <h2>Formação</h2>
-        {dados.formacoes?.map((form, index) => (
+        {formacoes.length === 0 && <p>—</p>}
+        {formacoes.map((form, index) => (
           <div key={index} className="bloco-item">
-            <p className="item-titulo">{form.curso} - {form.instituicao}</p>
-            <p>{form.periodo}</p>
-            {form.descricao && <p>{form.descricao}</p>}
+            <p className="item-titulo">
+              {(form?.curso || '')}{form?.instituicao ? ` - ${form.instituicao}` : ''}
+            </p>
+            <p>{form?.periodo || ''}</p>
+            {temTexto(form?.descricao) && <p className="texto-longo">{form.descricao}</p>}
           </div>
         ))}
       </div>
 
       <div className="bloco-sessao">
         <h2>Habilidades</h2>
+        {habilidades.length === 0 && <p>—</p>}
         <ul>
-          {dados.habilidades?.map((hab, index) => (
-            <li key={index}>{hab.descricao}</li>
+          {habilidades.map((hab, index) => (
+            <li key={index}>{hab?.descricao || ''}</li>
           ))}
         </ul>
       </div>
