@@ -11,6 +11,7 @@ import "./Form.css";
 import gerarCurriculoPDF from '../../utils/gerarCurriculoPDF';
 import { toast } from 'react-toastify';
 import Modelo0Preview from '../../components/Preview/Modelos/Modelo0Preview';
+import Modelo1Preview from '../../components/Preview/Modelos/Modelo1Preview';
 
 
 function Form() {
@@ -69,6 +70,8 @@ function Form() {
     toast.success("Currículo gerado com sucesso!");
   };
 
+  const previewDados = { ...dadosForm, fotoBase64 };
+
   return (
     <div>
       {/* Navbar no topo da página */}
@@ -97,7 +100,7 @@ function Form() {
           <InputTexto label="Endereço" name="cidade" register={register} required />
           <InputTexto label="Cargo desejado" name="cargo" register={register} required />
           <InputTexto label="Descrição profissional" name="descricao" register={register} />
-          {modeloSelecionado === "modelo1" && (
+          {modeloSelecionado === "modelo2" && (
             <>
               <InputTexto label="Idade ou Data de Nascimento (opcional)" name="idade" register={register} />
               <InputTexto label="Estado Civil (opcional)" name="estadoCivil" register={register} />
@@ -210,12 +213,27 @@ function Form() {
         </div>
 
       </form>
+      {/* Preview */}
       {modeloSelecionado === "modelo0" && (
         <div className="preview-container">
           <h2 style={{ textAlign: "center", marginTop: "40px" }}>Prévia do Currículo</h2>
-          <Modelo0Preview dados={dadosForm} />
+          <Modelo0Preview dados={previewDados} />
         </div>
       )}
+      {modeloSelecionado === "modelo1" && (
+        <div className="preview-container">
+          <h2 style={{ textAlign: "center", marginTop: "40px" }}>Prévia do Currículo</h2>
+          <Modelo1Preview dados={previewDados} />
+        </div>
+      )}
+      {modeloSelecionado === "modelo2" && (
+        <div className="preview-container">
+          <h2 style={{ textAlign: "center", marginTop: "40px" }}>Prévia do Currículo</h2>
+          {/* Temporário: até conectarmos o Modelo2Preview, use o 0 ou o 1 existente */}
+          <Modelo0Preview dados={previewDados} />
+        </div>
+      )}
+
 
       {/* Rodapé da página */}
       <Footer />

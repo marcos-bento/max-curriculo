@@ -1,0 +1,186 @@
+/* Bloco de estilos do Preview do Modelo 1 (simples moderno) */
+
+.modelo1-preview {
+  font-family: "Helvetica", "Arial", sans-serif;
+  color: #282828;
+  background: #fff;
+  width: 794px; /* A4 @ ~96dpi */
+  margin: 40px auto;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.m1-band {
+  background: #f5f7ff;
+  border-bottom: 1px solid #e3e7fb;
+  padding: 24px 0 28px 0;
+}
+
+.m1-container {
+  padding: 0 40px 28px 40px;
+}
+
+.m1-nome {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #282828;
+}
+
+.m1-cargo {
+  margin-top: 6px;
+  color: #2663eb;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Contatos com ícones */
+.m1-contatos {
+  margin-top: 14px;
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  color: #6e6e6e;
+  font-size: 11px;
+}
+.m1-contato {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.m1-ico {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+/* Seções com mais respiro entre linha e título */
+.m1-section {
+  margin-top: 26px;
+}
+.m1-title {
+  font-weight: 700;
+  font-size: 13px;
+  color: #282828;
+  margin: 0;
+  padding-top: 6px; /* espaço antes da linha */
+  position: relative;
+}
+.m1-title::before {
+  /* linha separadora acima do título */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: #d2d2d2;
+}
+.m1-title + .m1-text,
+.m1-title + .m1-item,
+.m1-title + .m1-timeline,
+.m1-title + .m1-list {
+  margin-top: 12px; /* espaço entre o título e o conteúdo */
+}
+
+.m1-text {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #303030;
+}
+
+/* Itens padrão */
+.m1-item {
+  margin-top: 10px;
+}
+.m1-item-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+.m1-item-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #282828;
+  word-break: break-word; /* quebra linhas em títulos longos */
+}
+.m1-item-sub {
+  font-size: 10.5px;
+  color: #6e6e6e;
+  white-space: nowrap;
+}
+.m1-divider {
+  height: 1px;
+  background: #e6e6e6;
+  margin: 12px 0 0 0;
+}
+.m1-muted {
+  color: #8a8a8a;
+  font-size: 11.5px;
+}
+
+/* Lista de habilidades */
+.m1-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.m1-list li {
+  position: relative;
+  padding-left: 14px;
+  margin: 6px 0;
+  font-size: 12px;
+}
+.m1-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #282828;
+}
+
+/* Timeline de experiências */
+.m1-timeline {
+  position: relative;
+  margin-top: 12px;
+}
+.m1-tl-item {
+  position: relative;
+  padding-left: 24px; /* espaço para ponto e conector */
+  margin-top: 14px;
+}
+.m1-tl-dot {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2663eb;
+}
+.m1-tl-connector {
+  position: absolute;
+  left: 8px;  /* a partir do dot */
+  top: 6px;
+  width: 12px;
+  height: 2px;
+  background: #2663eb;
+}
+.m1-tl-vert {
+  position: absolute;
+  left: 2px;  /* centro do dot */
+  top: 12px;
+  width: 2px;
+  height: calc(100% - 6px); /* desce até antes do próximo item */
+  background: #2663eb;
+}
+
+@media (max-width: 820px) {
+  .modelo1-preview { width: 100%; }
+}

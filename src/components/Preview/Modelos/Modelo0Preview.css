@@ -1,13 +1,14 @@
 .modelo0-preview {
-  font-family: "Helvetica", "Arial", sans-serif;
-  font-size: 12pt;
-  width: 794px; /* equivalente a A4 em px @ 96dpi */
-  padding: 40px 20px;
+  box-sizing: border-box;          /* mantém a largura total em 794px */
+  width: 794px;                    /* A4 @96dpi */
+  padding: 75.6px;                 /* 20 mm ≈ 75.6 px em todos os lados */
   margin: 40px auto;
   background-color: white;
   color: #000;
   border: 1px solid #ccc;
   line-height: 1.4;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 12pt;
 }
 
 .titulo-nome {

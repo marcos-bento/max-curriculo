@@ -28,22 +28,22 @@
           <div className="modelos-grid">
             <div className="modelo-card" onClick={() => selecionarModelo("modelo0")}>
               <img src={modelo0} alt="Modelo 0" />
-              <p>Modelo Clássico</p>
+              <p>Modelo Simples</p>
             </div>
 
             <div className="modelo-card" onClick={() => selecionarModelo("modelo1")}>
               <img src={modelo1} alt="Modelo 1" />
-              <p>01 - Modelo Azul Com Imagem</p>
+              <p>Modelo Simples Moderno</p>
             </div>
 
             <div className="modelo-card" onClick={() => selecionarModelo("modelo2")}>
               <img src={modelo2} alt="Modelo 2" />
-              <p>02 - Modelo Azul Com Imagem</p>
+              <p>Modelo Azul Com Imagem</p>
             </div>
 
             <div className="modelo-card" onClick={() => selecionarModelo("modelo3")}>
               <img src={modelo3} alt="Modelo 3" />
-              <p>03 - Modelo Vermelho com Imagem</p>
+              <p>Modelo Vermelho com Imagem</p>
             </div>
           </div>
         </div>
