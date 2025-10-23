@@ -7,7 +7,7 @@ Mudar o nome para Modelo Simples (Feito)
 Igualar a margem (feito)
 
 - Modelo 1:
-Adicionar Ícones no topo (endereço, Telefone e E-mail)
+Adicionar Ícones no topo (endereço, Telefone e E-mail) (Feito)
 Espaçamento entre as linhas horizontais e os titulos pois estão colados
 Quebra linhas no titulo do trabalho + Nome da empresa
 Adicionar ícone de linha do tempo passando entre as experiências de trabalho, sendo um pontinho na experiência e uma linha horizontal ligando até a próxima experiencia
