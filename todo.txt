@@ -2,13 +2,26 @@
 Adicionar campo Objetivo (Feito)
 Ajustar campo descrição dos cargos (Adicionar Quebra linha) (Feito)
 Mudar o nome para Modelo Simples (Feito)
-
 - Modelo 0 Preview:
 Igualar a margem (feito)
 
+==========================================================================
+
 - Modelo 1:
 Adicionar Ícones no topo (endereço, Telefone e E-mail) (Feito)
-Espaçamento entre as linhas horizontais e os titulos pois estão colados
-Quebra linhas no titulo do trabalho + Nome da empresa
-Adicionar ícone de linha do tempo passando entre as experiências de trabalho, sendo um pontinho na experiência e uma linha horizontal ligando até a próxima experiencia
-Mudar a cor da linha do tempo para um cinzinha
+Quebra linhas no titulo do trabalho + Nome da empresa (Feito)
+Adicionar ícone de linha do tempo passando entre as experiências de trabalho, sendo um pontinho na experiência e uma linha horizontal ligando até a próxima experiencia (Feito)
+Aumentar Espaçamento inferior entre as linhas horizontais e os titulos pois estão colados (Feito)
+Diminuir Espaçamento superior entre linhas e conteúdo acima pois estão muito espaçados (Feito)
+Mudar a cor da linha do tempo para um cinzinha (Feito)
+Se o endereço for grande demais o arquivo .pdf deixa o conteúdo vazar da tela. Precisamos validar se for pequeno cabe em 1 linha, se for grande adicionamos um quebralinha. (Feito)
+Se o endereço for pequeno ele fica encavalado tudo na primeira linha, precisamos contar a quantidade de caracteres do campo anterior para só dai aplicar o próximo campo. (Feito)
+Previa: (Feito)
+- Aumente o tamanho dos textos (Feito)
+- No trecho de experiência profissional mova os textos para alinhar a margem esquerda conforme o documento inteiro. (Feito)
+- No trecho de experiência profissional mova os ícones visuais esquerdos que simulam linha do tempo para ficarem a esquerda do texto. (Feito)
+
+==========================================================================
+
+Modelo 2:
+
