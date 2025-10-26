@@ -24,4 +24,9 @@ Previa: (Feito)
 ==========================================================================
 
 Modelo 2:
-
+Diminuir o tamanho da Font (Feito)
+Mover a imagem alguns pixels para baixo (Feito)
+Adicionar no PDF os campos novos que são solicitados (Linkedin, Portfólio, Idade, Estado Civil etc) (Feito)
+Criar o Preview (Feito)
+Ajustar o Preview
+Dar opção de Sem Foto ou Com Foto

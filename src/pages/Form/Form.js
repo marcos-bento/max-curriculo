@@ -1,3 +1,4 @@
+// src/pages/Form/Form.js
 // Importações de componentes e hooks necessários
 import Navbar from '../../components/Navbar/Navbar';
 import Titulo from '../../components/Titulo/Titulo';
@@ -12,7 +13,7 @@ import gerarCurriculoPDF from '../../utils/gerarCurriculoPDF';
 import { toast } from 'react-toastify';
 import Modelo0Preview from '../../components/Preview/Modelos/Modelo0Preview';
 import Modelo1Preview from '../../components/Preview/Modelos/Modelo1Preview';
-
+import Modelo2Preview from '../../components/Preview/Modelos/Modelo2Preview';
 
 function Form() {
   const [modeloSelecionado, setModeloSelecionado] = React.useState("modelo0");
@@ -37,36 +38,19 @@ function Form() {
 
   const handleRemoverFoto = () => {
     setFotoBase64(null);
-    // Também limpa o input file manualmente
     const input = document.getElementById("foto-perfil-input");
     if (input) input.value = "";
   };
 
-  // Inicializa o hook do formulário
   const { register, handleSubmit, control, watch } = useForm();
   const dadosForm = watch();
 
-  // Controle dinâmico dos campos de EXPERIÊNCIA
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: "experiencias"
-  });
+  const { fields, append, remove } = useFieldArray({ control, name: "experiencias" });
+  const { fields: formacoes, append: appendFormacao, remove: removeFormacao } = useFieldArray({ control, name: "formacoes" });
+  const { fields: habilidades, append: appendHabilidade, remove: removeHabilidade } = useFieldArray({ control, name: "habilidades" });
 
-  // Controle dinâmico dos campos de FORMAÇÃO
-  const { fields: formacoes, append: appendFormacao, remove: removeFormacao } = useFieldArray({
-    control,
-    name: "formacoes"
-  });
-
-  // Controle dinâmico dos campos de HABILIDADES
-  const { fields: habilidades, append: appendHabilidade, remove: removeHabilidade } = useFieldArray({
-    control,
-    name: "habilidades"
-  });
-
-  // Manipula o envio do formulário
   const onSubmit = (dados) => {
-    gerarCurriculoPDF({ ...dados, fotoBase64 }); // <- adiciona imagem ao objeto
+    gerarCurriculoPDF({ ...dados, fotoBase64 });
     toast.success("Currículo gerado com sucesso!");
   };
 
@@ -74,24 +58,17 @@ function Form() {
 
   return (
     <div>
-      {/* Navbar no topo da página */}
       <Navbar isHome={false} />
-
-      {/* Título principal da página */}
       <div style={{ paddingTop: "50px" }}>
         <Titulo texto="Novo currículo" />
       </div>
 
-      {/* Aviso legal sobre uso de dados */}
       <Aviso
         titulo="Aviso"
         texto="Os dados inseridos são usados apenas para gerar seu currículo. Não armazenamos nem compartilhamos nenhuma informação. O MaxCurriculo não se responsabiliza pelo uso ou conteúdo dos dados fornecidos."
       />
 
-      {/* Início do formulário */}
       <form className='form-container' onSubmit={handleSubmit(onSubmit)}>
-
-        {/* Seção: Dados Pessoais */}
         <TituloSessao texto="Dados pessoais" />
         <div style={{ padding: "40px var(--padding-padrao)" }}>
           <InputTexto label="Nome completo" name="nome" register={register} required />
@@ -137,7 +114,6 @@ function Form() {
           )}
         </div>
 
-        {/* Seção: Experiência Profissional */}
         <TituloSessao texto="Experiência Profissional" />
         <div className="form-section">
           {fields.map((field, index) => (
@@ -153,7 +129,6 @@ function Form() {
               </div>
             </div>
           ))}
-          {/* Botão para adicionar nova experiência */}
           <div className="btn-centro">
             <button type="button" onClick={() => append({ empresa: "", cargo: "", periodo: "", descricao: "" })} className="btn-adicionar-experiencia">
               + Adicionar Experiência
@@ -161,7 +136,6 @@ function Form() {
           </div>
         </div>
 
-        {/* Seção: Formação */}
         <TituloSessao texto="Formação" />
         <div className="form-section">
           {formacoes.map((field, index) => (
@@ -177,7 +151,6 @@ function Form() {
               </div>
             </div>
           ))}
-          {/* Botão para adicionar nova formação */}
           <div className="btn-centro">
             <button type="button" onClick={() => appendFormacao({ instituicao: "", curso: "", periodo: "", descricao: "" })} className="btn-adicionar-experiencia">
               + Adicionar Formação
@@ -185,7 +158,6 @@ function Form() {
           </div>
         </div>
 
-        {/* Seção: Habilidades */}
         <TituloSessao texto="Habilidades" />
         <div className="form-section">
           {habilidades.map((field, index) => (
@@ -198,7 +170,6 @@ function Form() {
               </div>
             </div>
           ))}
-          {/* Botão para adicionar nova habilidade */}
           <div className="btn-centro">
             <button type="button" onClick={() => appendHabilidade({ descricao: "" })} className="btn-adicionar-experiencia">
               + Adicionar Habilidade
@@ -211,8 +182,8 @@ function Form() {
             Gerar Currículo PDF
           </button>
         </div>
-
       </form>
+
       {/* Preview */}
       {modeloSelecionado === "modelo0" && (
         <div className="preview-container">
@@ -229,13 +200,10 @@ function Form() {
       {modeloSelecionado === "modelo2" && (
         <div className="preview-container">
           <h2 style={{ textAlign: "center", marginTop: "40px" }}>Prévia do Currículo</h2>
-          {/* Temporário: até conectarmos o Modelo2Preview, use o 0 ou o 1 existente */}
-          <Modelo0Preview dados={previewDados} />
+          <Modelo2Preview dados={previewDados} /> {/* << CONECTADO */}
         </div>
       )}
 
-
-      {/* Rodapé da página */}
       <Footer />
     </div>
   );
