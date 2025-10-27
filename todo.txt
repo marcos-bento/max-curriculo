@@ -30,3 +30,4 @@ Adicionar no PDF os campos novos que são solicitados (Linkedin, Portfólio, Ida
 Criar o Preview (Feito)
 Ajustar o Preview
 Dar opção de Sem Foto ou Com Foto
+Adicionar um botão para grar curriculo também abaixo da prévia
