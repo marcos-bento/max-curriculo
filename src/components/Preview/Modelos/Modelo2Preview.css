@@ -1,7 +1,38 @@
+/* ---- Área externa + toolbar ---- */
+.modelo2-wrap-outer {
+  width: 820px;
+  margin: 16px auto 40px;
+}
+
+.modelo2-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
+.modelo2-toolbar-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.modelo2-switch,
+.modelo2-radio {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 13px;
+}
+
+/* ---- Documento ---- */
 .modelo2-wrapper {
   font-family: "Helvetica", "Arial", sans-serif;
-  width: 794px;                  /* A4 em px @ 96dpi */
-  margin: 36px auto;
+  width: 794px;                 /* A4 em px @ 96dpi */
+  margin: 0 auto;
   border: 1px solid #ccc;
   background: #fff;
   color: #000;
@@ -19,40 +50,49 @@
 .modelo2-header-grid {
   display: grid;
   grid-template-columns: 110px 1fr; /* espaço dedicado para a foto */
-  gap: 22px;                        /* separação garantida */
+  gap: 22px;
   align-items: start;
 }
 
-/* Foto quadrada como no PDF */
+/* Foto: permite quadrada ou redonda */
 .modelo2-foto {
   width: 110px;
   height: 110px;
   object-fit: cover;
-  border-radius: 4px;               /* quadrada com leve raio */
   background: #eee;
   border: 2px solid rgba(255,255,255,.85);
 }
-
-/* Placeholder ocupa o mesmo espaço quando não há foto */
-.modelo2-foto.placeholder { display: block; }
+.modelo2-foto.square { border-radius: 4px; }
+.modelo2-foto.round  { border-radius: 50%; }
+.modelo2-foto.placeholder { display: block; visibility: hidden; }
 
 /* Texto do header */
+.modelo2-nome-linha { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px; }
 .modelo2-nome {
   font-weight: 700;
   font-size: 20px;
   margin-top: 2px;
+}
+.modelo2-idade {
+  font-size: 13px;
+  opacity: .95;
+}
+
+.modelo2-cargo {
+  font-size: 13px;
+  margin-top: 16px;  /* gap significativo entre nome e cargo */
 }
 
 .modelo2-divisor {
   height: 2px;
   background: #fff;
   opacity: 0.85;
-  margin: 12px 0;
+  margin: 14px 0;
 }
 
-.modelo2-linha {
-  font-size: 13px;
-  margin-bottom: 8px;
+/* Objetivo (sem label) — justificado e com menor margem direita para "ir até o fim" */
+.modelo2-objetivo {
+  text-align: justify;
 }
 
 /* Grid 2 colunas (Aside 35%) */
@@ -68,15 +108,16 @@
   padding: 24px;
 }
 
+/* Linha separadora com maior espaço até o título */
 .modelo2-sep {
   height: 1px;
   background: #000;
-  margin: 0 6px 12px;
+  margin: 0 6px 18px; /* ↑ espaço entre a linha e o título */
 }
 
 .modelo2-titulo-secao {
   font-size: 14px;
-  margin: 0 0 12px 6px;
+  margin: 0 0 24px 6px; /* ↑ espaço significativo antes do texto */
   font-weight: 700;
 }
 
@@ -85,13 +126,11 @@
   padding: 0 6px;
 }
 
-/* Linhas com ícones */
 .modelo2-iconrow {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .modelo2-ico {
   width: 14px;
   height: 14px;
@@ -100,9 +139,14 @@
 
 /* utilitários */
 .indent { margin-left: 12px; }
-.mb6 { margin-bottom: 8px; }
-.mb4 { margin-bottom: 6px; }
+.meta { color: #777; }          /* períodos em cinza */
+.justify { text-align: justify; }
+
+.mb4  { margin-bottom: 6px; }
+.mb6  { margin-bottom: 8px; }
+.mb8  { margin-bottom: 10px; }
 .mb12 { margin-bottom: 14px; }
+.mb16 { margin-bottom: 16px; }
 
 /* Coluna direita */
 .modelo2-col-dir {
@@ -111,14 +155,36 @@
 
 .modelo2-h2 {
   font-size: 15px;
-  margin: 0 0 12px 0;
+  margin: 0 0 24px 0;      /* espaço maior antes do conteúdo */
   font-weight: 700;
 }
 
 .modelo2-exp-titulo {
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 10px;     /* ↑ espaço entre nome da empresa/cargo e período */
   font-size: 13.5px;
 }
 
+/* Placeholder de experiências */
 .modelo2-placeholder { opacity: 0.6; }
+
+/* CTA abaixo da prévia */
+.modelo2-cta {
+  width: 794px;
+  margin: 12px auto 0;
+  display: flex;
+  justify-content: center;
+}
+.modelo2-btn {
+  appearance: none;
+  border: none;
+  background: rgb(30, 50, 90);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.04s ease, opacity 0.2s ease;
+}
+.modelo2-btn:hover { opacity: 0.92; }
+.modelo2-btn:active { transform: translateY(1px); }

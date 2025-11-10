@@ -1,10 +1,15 @@
 import React from "react";
 import "./Modelo2Preview.css";
+
 import mailIcon from "../../../assets/img/mail.png";
 import foneIcon from "../../../assets/img/fone.png";
 import pinIcon from "../../../assets/img/gps.png";
 
-export default function Modelo2Preview({ dados = {} }) {
+/**
+ * Preview sem controles.
+ * Recebe as escolhas de foto via props: { mostrarFoto, formatoFoto }
+ */
+export default function Modelo2Preview({ dados = {}, mostrarFoto = true, formatoFoto = "quadrada" }) {
   const {
     nome = "",
     descricao = "",
@@ -23,40 +28,37 @@ export default function Modelo2Preview({ dados = {} }) {
     experiencias = [],
   } = dados;
 
+  const fotoUsada = mostrarFoto ? fotoBase64 : null;
+
   return (
     <div className="modelo2-wrapper">
-      {/* Header em grid: imagem e texto em colunas (sem sobreposição) */}
+      {/* Header em grid: imagem + texto (sem sobreposição) */}
       <div className="modelo2-header">
         <div className="modelo2-header-grid">
-          {fotoBase64 ? (
-            <img src={fotoBase64} alt="Foto" className="modelo2-foto" />
+          {fotoUsada ? (
+            <img
+              src={fotoUsada}
+              alt="Foto"
+              className={`modelo2-foto ${formatoFoto === "redonda" ? "round" : "square"}`}
+            />
           ) : (
             <div className="modelo2-foto placeholder" />
           )}
 
           <div className="modelo2-header-text">
-            <div className="modelo2-nome">{nome}</div>
+            {/* Nome + idade entre parênteses */}
+            <div className="modelo2-nome-linha">
+              <span className="modelo2-nome">{nome}</span>
+              {idade && <span className="modelo2-idade"> ({idade})</span>}
+            </div>
+
+            {/* Cargo desejado com gap sob o nome */}
+            {cargo && <div className="modelo2-cargo">{cargo}</div>}
+
             <div className="modelo2-divisor" />
-            {descricao && (
-              <div className="modelo2-linha">
-                <strong>Objetivo:</strong> {descricao}
-              </div>
-            )}
-            {idade && (
-              <div className="modelo2-linha">
-                <strong>Idade / Nascimento:</strong> {idade}
-              </div>
-            )}
-            {estadoCivil && (
-              <div className="modelo2-linha">
-                <strong>Estado civil:</strong> {estadoCivil}
-              </div>
-            )}
-            {cargo && (
-              <div className="modelo2-linha">
-                <strong>Cargo desejado:</strong> {cargo}
-              </div>
-            )}
+
+            {/* Objetivo (sem label) — justificado */}
+            {descricao && <div className="modelo2-objetivo">{descricao}</div>}
           </div>
         </div>
       </div>
@@ -98,10 +100,10 @@ export default function Modelo2Preview({ dados = {} }) {
                 {formacoes.map((f, idx) => {
                   const linha = [f?.curso, f?.instituicao].filter(Boolean).join(" — ");
                   return (
-                    <div key={idx} className="mb6">
+                    <div key={idx} className="mb8">
                       {linha && <div>• {linha}</div>}
-                      {f?.periodo && <div className="indent">{f.periodo}</div>}
-                      {f?.descricao && <div className="indent">{f.descricao}</div>}
+                      {f?.periodo && <div className="indent meta">{f.periodo}</div>}
+                      {f?.descricao && <div className="indent justify">{f.descricao}</div>}
                     </div>
                   );
                 })}
@@ -142,12 +144,12 @@ export default function Modelo2Preview({ dados = {} }) {
           <div className="modelo2-texto">
             {Array.isArray(experiencias) && experiencias.length > 0 ? (
               experiencias.map((exp, idx) => (
-                <div key={idx} className="mb12">
+                <div key={idx} className="mb16">
                   <div className="modelo2-exp-titulo">
                     {[exp?.cargo, exp?.empresa].filter(Boolean).join(" — ")}
                   </div>
-                  {exp?.periodo && <div>{exp.periodo}</div>}
-                  {exp?.descricao && <div>{exp.descricao}</div>}
+                  {exp?.periodo && <div className="meta">{exp.periodo}</div>}
+                  {exp?.descricao && <div className="justify">{exp.descricao}</div>}
                 </div>
               ))
             ) : (
