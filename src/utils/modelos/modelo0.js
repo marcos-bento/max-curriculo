@@ -18,6 +18,7 @@ const gerarCurriculoPDF  = (dados) => {
   doc.text(`Telefone: ${dados.telefone || ""}`, left, 36);
   doc.text(`Endereço: ${dados.cidade || ""}`, left, 42);
   doc.text(`Cargo desejado: ${dados.cargo || ""}`, left, 48);
+  doc.text(`Estado civil: ${dados.estadoCivil || ""}`, left, 54);
 
   let y = 60;
 

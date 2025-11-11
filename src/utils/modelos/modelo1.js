@@ -89,6 +89,14 @@ export default async function gerarModelo1(dados = {}) {
     doc.text(String(dados.cargo), MARGIN_L, y + 18);
   }
 
+  // Estado civil abaixo do cargo (discreto)
+  if (dados.estadoCivil) {
+    setColor(MUTED);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.text(`Estado civil: ${String(dados.estadoCivil)}`, MARGIN_L, 94);
+  }
+
   // Contatos com quebra por contagem de caracteres
   const iconSize = 12;
   const gapItem = 14; // espaçamento entre blocos de contato (na mesma linha)

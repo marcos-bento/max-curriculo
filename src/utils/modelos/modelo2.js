@@ -10,6 +10,84 @@ export default async function gerarModelo2(dados = {}) {
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
 
+  // Helper: detecta formato suportado (PNG/JPEG) a partir de DataURL
+  const detectFormatFromDataUrl = (dataUrl) => {
+    if (typeof dataUrl !== "string") return null;
+    const m = dataUrl.match(/^data:image\/([a-zA-Z0-9.+-]+);base64,/);
+    if (!m) return null;
+    const subtype = m[1].toLowerCase();
+    if (subtype.includes("png")) return "PNG";
+    if (subtype.includes("jpeg") || subtype.includes("jpg")) return "JPEG";
+    return null; // ex.: webp, heic, etc.
+  };
+
+  // Helper: rasteriza para um DataURL no mime desejado (mantém dimensões)
+  const rasterizeToDataUrl = (srcDataUrl, mime = "image/png") => new Promise((resolve, reject) => {
+    try {
+      const img = new Image();
+      img.onload = () => {
+        try {
+          const canvas = document.createElement("canvas");
+          canvas.width = img.naturalWidth || img.width;
+          canvas.height = img.naturalHeight || img.height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+          const out = canvas.toDataURL(mime);
+          resolve(out);
+        } catch (e) { resolve(srcDataUrl); }
+      };
+      img.onerror = () => resolve(srcDataUrl);
+      img.src = srcDataUrl;
+    } catch (e) {
+      resolve(srcDataUrl);
+    }
+  });
+
+  // Helper: normaliza SEMPRE para PNG via canvas (evita CMYK/progressive JPEG etc.)
+  const ensureSupportedPdfImage = async (dataUrl) => {
+    const converted = await rasterizeToDataUrl(dataUrl, "image/png");
+    return { dataUrl: converted, fmt: "PNG" };
+  };
+
+  // Helper: gera PNG circular (mascara com clip), simulando object-fit: cover central
+  const makeCircularPng = (srcDataUrl) => new Promise((resolve) => {
+    try {
+      const img = new Image();
+      img.onload = () => {
+        try {
+          const nW = img.naturalWidth || img.width;
+          const nH = img.naturalHeight || img.height;
+          const side = Math.min(nW, nH);
+          const sx = (nW - side) / 2;
+          const sy = (nH - side) / 2;
+
+          const canvas = document.createElement("canvas");
+          canvas.width = side;
+          canvas.height = side;
+          const ctx = canvas.getContext("2d");
+
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(side / 2, side / 2, side / 2, 0, Math.PI * 2);
+          ctx.closePath();
+          ctx.clip();
+
+          // Desenha o recorte quadrado central preenchendo o canvas
+          ctx.drawImage(img, sx, sy, side, side, 0, 0, side, side);
+          ctx.restore();
+
+          resolve(canvas.toDataURL("image/png"));
+        } catch (e) {
+          resolve(srcDataUrl);
+        }
+      };
+      img.onerror = () => resolve(srcDataUrl);
+      img.src = srcDataUrl;
+    } catch (e) {
+      resolve(srcDataUrl);
+    }
+  });
+
   // Ícones base64
   const mailImg = await loadImageAsBase64(mailIcon);
   const foneImg = await loadImageAsBase64(foneIcon);
@@ -77,8 +155,15 @@ export default async function gerarModelo2(dados = {}) {
 
   // Calcular caixa da foto com proporção preservada
   let photoDraw = null;
+  let fotoForPdf = null; // { dataUrl, fmt }
   if (dados.fotoBase64) {
-    const natural = await measureImage(dados.fotoBase64);
+    // Normaliza a foto para formato suportado pelo jsPDF (evita imagem corrompida)
+    const basePng = await ensureSupportedPdfImage(dados.fotoBase64);
+    const wantsRound = String(dados.formatoFoto || "").toLowerCase() === "redonda";
+    const finalDataUrl = wantsRound ? await makeCircularPng(basePng.dataUrl) : basePng.dataUrl;
+    fotoForPdf = { dataUrl: finalDataUrl, fmt: "PNG" };
+
+    const natural = await measureImage(finalDataUrl);
     const ratio = Math.min(PHOTO_BOX.maxW / natural.w, PHOTO_BOX.maxH / natural.h);
     const w = Math.max(1, natural.w * ratio);
     const h = Math.max(1, natural.h * ratio);
@@ -101,8 +186,10 @@ export default async function gerarModelo2(dados = {}) {
   doc.rect(0, 0, pageWidth, headerHeight, "F");
 
   // Foto
-  if (photoDraw && dados.fotoBase64) {
-    try { doc.addImage(dados.fotoBase64, "JPEG", photoDraw.x, photoDraw.y, photoDraw.w, photoDraw.h); } catch {}
+  if (photoDraw && fotoForPdf?.dataUrl) {
+    try {
+      doc.addImage(fotoForPdf.dataUrl, fotoForPdf.fmt, photoDraw.x, photoDraw.y, photoDraw.w, photoDraw.h);
+    } catch {}
   }
 
   // Texto do header
@@ -114,13 +201,18 @@ export default async function gerarModelo2(dados = {}) {
   const nomeStr = (dados.nome || "").toString();
   doc.text(nomeStr, headerTextX, nameY);
 
-  // Idade (ao lado do nome, entre parênteses, menor)
-  if (dados.idade) {
+  // Idade e Estado Civil (ao lado do nome, entre parênteses, menor)
+  {
     const nameWidth = doc.getTextWidth(nomeStr);
-    const idadeStr = ` (${String(dados.idade)})`;
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(SUB_SIZE);
-    doc.text(idadeStr, headerTextX + nameWidth + 8, nameY);
+    const parts = [];
+    if (dados.idade) parts.push(String(dados.idade));
+    if (dados.estadoCivil) parts.push(String(dados.estadoCivil));
+    if (parts.length) {
+      const infoStr = ` (${parts.join(" • ")})`;
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(SUB_SIZE);
+      doc.text(infoStr, headerTextX + nameWidth + 8, nameY);
+    }
   }
 
   // Cargo (abaixo do nome) com GAP menor (pedido)
