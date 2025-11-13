@@ -278,6 +278,13 @@ function Form() {
           </div>
         </div>
 
+        <hr style={{
+          width: '80%',
+          border: 'none',
+          margin: 'auto',
+          borderTop: '1px solid #868686ff'
+        }} />
+
         {/* Botão principal (acima do preview) */}
         <div className="btn-centro">
           <button type="submit" className="btn-gerar-curriculo">

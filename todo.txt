@@ -32,4 +32,4 @@ Ajustar o Preview para parecer com tudo até aqui (Feito)
 Dar opção de Sem Foto ou Com Foto no Form e não no preview (Feito)
 Dar opção de foto quadrada ou redonda no Form e não no preview (Feito)
 Adicionar um botão para grar curriculo também abaixo da prévia Identico ao botão acima do preview (Feito)
-Ajustar a imagem pois está saindo no currículo toda bugada completamente ilegível. No Preview sai perfeito.
+Ajustar a imagem pois está saindo no currículo toda bugada completamente ilegível. No Preview sai perfeito. (Feito)
