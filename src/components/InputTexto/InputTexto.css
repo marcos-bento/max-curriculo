@@ -19,3 +19,19 @@
   width: 100%;
   box-sizing: border-box;
 }
+
+@media (max-width: 992px) {
+  .input-wrapper {
+    padding: 0 var(--padding-padrao);
+  }
+}
+
+@media (max-width: 640px) {
+  .input-wrapper {
+    padding: 0;
+  }
+
+  .input-campo {
+    font-size: 15px;
+  }
+}

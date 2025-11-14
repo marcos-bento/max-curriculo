@@ -34,3 +34,21 @@
     transform: translateX(-100%);
   }
 }
+
+@media (max-width: 768px) {
+  .rotating-message-wrapper {
+    margin-left: var(--padding-padrao);
+    margin-right: var(--padding-padrao);
+  }
+}
+
+@media (max-width: 500px) {
+  .rotating-message-wrapper {
+    height: 32px;
+    margin-top: 1.5rem;
+  }
+
+  .rotating-text {
+    font-size: 14px;
+  }
+}

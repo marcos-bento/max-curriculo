@@ -94,7 +94,7 @@ function Form() {
       <Navbar isHome={false} />
 
       {/* Título principal da página */}
-      <div style={{ paddingTop: "50px" }}>
+      <div className="titulo-wrapper">
         <Titulo texto="Novo currículo" />
       </div>
 
@@ -109,7 +109,7 @@ function Form() {
 
         {/* Seção: Dados Pessoais */}
         <TituloSessao texto="Dados pessoais" />
-        <div style={{ padding: "40px var(--padding-padrao)" }}>
+        <div className="form-section">
           <InputTexto label="Nome completo" name="nome" register={register} required />
           <InputTexto label="Email" name="email" type="email" register={register} required />
           <InputTexto label="Telefone" name="telefone" register={register} required />
@@ -121,19 +121,19 @@ function Form() {
               <InputTexto label="Idade ou Data de Nascimento (opcional)" name="idade" register={register} />
               <InputTexto label="Estado Civil (opcional)" name="estadoCivil" register={register} />
 
-              <div style={{ padding: "40px var(--padding-padrao)" }}>
+              <div className="form-section form-section--inner">
                 <InputTexto label="LinkedIn" name="linkedin" register={register} />
                 <InputTexto label="Portfólio ou Website" name="portfolio" register={register} />
 
                 {/* Controles de foto AGORA no FORM (não no Preview) */}
                 <div className="form-section">
-                  <label style={{ fontWeight: "bold", display: "block", marginBottom: "10px", textAlign: "center" }}>
+                  <label className="foto-label">
                     Foto de Perfil (opcional)
                   </label>
 
                   {/* Toggle Com foto / Sem foto */}
-                  <div style={{ display: "flex", gap: "16px", justifyContent: "center", marginBottom: "10px" }}>
-                    <label style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <div className="foto-toggle-wrapper">
+                    <label className="foto-toggle-option">
                       <input
                         type="checkbox"
                         checked={mostrarFoto}
@@ -143,7 +143,10 @@ function Form() {
                     </label>
 
                     {/* Formato da foto */}
-                    <label style={{ display: "flex", alignItems: "center", gap: 6, opacity: mostrarFoto ? 1 : 0.5 }}>
+                    <label
+                      className="foto-toggle-option"
+                      style={{ opacity: mostrarFoto ? 1 : 0.5 }}
+                    >
                       <input
                         type="radio"
                         name="formato-foto"
@@ -154,7 +157,10 @@ function Form() {
                       />
                       <span>Quadrada</span>
                     </label>
-                    <label style={{ display: "flex", alignItems: "center", gap: 6, opacity: mostrarFoto ? 1 : 0.5 }}>
+                    <label
+                      className="foto-toggle-option"
+                      style={{ opacity: mostrarFoto ? 1 : 0.5 }}
+                    >
                       <input
                         type="radio"
                         name="formato-foto"
@@ -296,19 +302,19 @@ function Form() {
       {/* Preview */}
       {modeloSelecionado === "modelo0" && (
         <div className="preview-container">
-          <h2 style={{ textAlign: "center", marginTop: "40px" }}>Prévia do Currículo</h2>
+          <h2 className="preview-heading">Prévia do Currículo</h2>
           <Modelo0Preview dados={previewDados} />
         </div>
       )}
       {modeloSelecionado === "modelo1" && (
         <div className="preview-container">
-          <h2 style={{ textAlign: "center", marginTop: "40px" }}>Prévia do Currículo</h2>
+          <h2 className="preview-heading">Prévia do Currículo</h2>
           <Modelo1Preview dados={previewDados} />
         </div>
       )}
       {modeloSelecionado === "modelo2" && (
         <div className="preview-container">
-          <h2 style={{ textAlign: "center", marginTop: "40px" }}>Prévia do Currículo</h2>
+          <h2 className="preview-heading">Prévia do Currículo</h2>
           <Modelo2Preview
             dados={previewDados}
             mostrarFoto={mostrarFoto}
@@ -318,7 +324,7 @@ function Form() {
       )}
 
       {/* Botão idêntico abaixo do preview */}
-      <div className="btn-centro" style={{ margin: "24px 0 60px" }}>
+      <div className="btn-centro btn-centro--spaced">
         <button
           type="button"
           className="btn-gerar-curriculo"

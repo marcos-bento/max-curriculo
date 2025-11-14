@@ -1,5 +1,20 @@
+.titulo-wrapper {
+  padding-top: 50px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .form-section {
   padding: 40px var(--padding-padrao);
+}
+
+.form-section--inner {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .experiencia-bloco {
@@ -35,6 +50,10 @@
   margin-bottom: 40px;
 }
 
+.btn-centro--spaced {
+  margin: 24px 0 60px;
+}
+
 .btn-gerar-curriculo {
   background-color: #439a1a;
   color: white;
@@ -43,7 +62,7 @@
   border: 2px solid white;
   border-radius: 20px;
   cursor: pointer;
-  box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
 }
 
@@ -54,8 +73,36 @@
 .preview-container {
   padding: 40px var(--padding-padrao);
   border-top: 1px solid #ddd;
-  width: 1000px;
+  width: min(1000px, 100%);
   margin: auto;
+  overflow-x: auto;
+}
+
+.preview-heading {
+  text-align: center;
+  margin: 40px 0 24px;
+  font-size: 24px;
+}
+
+.foto-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.foto-toggle-wrapper {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.foto-toggle-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .foto-upload-container {
@@ -108,4 +155,67 @@
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   margin-top: 5px;
   transition: background-color 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .form-section {
+    padding: 30px var(--padding-padrao);
+  }
+
+  .preview-container {
+    padding: 30px var(--padding-padrao);
+  }
+}
+
+@media (max-width: 768px) {
+  .titulo-wrapper {
+    padding-top: 30px;
+  }
+
+  .form-container {
+    gap: 16px;
+  }
+
+  .form-section {
+    padding: 24px var(--padding-padrao);
+  }
+
+  .preview-heading {
+    font-size: 22px;
+    margin: 24px 0 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-section {
+    padding: 20px var(--padding-padrao);
+  }
+
+  .experiencia-bloco {
+    padding-bottom: 16px;
+  }
+
+  .btn-centro {
+    margin-top: 16px;
+    margin-bottom: 30px;
+  }
+
+  .preview-container {
+    padding: 20px var(--padding-padrao);
+  }
+
+  .foto-toggle-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .preview-heading {
+    font-size: 20px;
+  }
+
+  .btn-gerar-curriculo {
+    width: 100%;
+  }
 }

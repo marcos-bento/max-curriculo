@@ -6,7 +6,7 @@
   align-items: center;
   padding: 60px var(--padding-padrao);
   gap: 60px;
-  height: 200px;
+  min-height: 200px;
   flex-wrap: wrap;
 }
 
@@ -80,4 +80,41 @@
 
 .footer-link:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .footer {
+    padding: 40px var(--padding-padrao);
+  }
+}
+
+@media (max-width: 700px) {
+  .footer {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .footer-coluna-direita {
+    align-items: center;
+  }
+
+  .footer-linha-central {
+    width: 100%;
+    height: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 32px var(--padding-padrao);
+  }
+
+  .footer-logo {
+    font-size: 28px;
+  }
+
+  .footer-titulo {
+    font-size: 20px;
+  }
 }

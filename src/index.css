@@ -1,11 +1,37 @@
 :root {
   --azul-principal: #1A4D9A;
   --cinza-principal: #E7E7E7;
+  --padding-padrao: 150px;
   --padding-padrão: 150px;
+  --padding-padrǜo: 150px;
 }
 
 body {
   margin: 0;
   background-color: var(--cinza-principal);
   font-family: 'Niramit', sans-serif;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --padding-padrao: 80px;
+    --padding-padrão: 80px;
+    --padding-padrǜo: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --padding-padrao: 40px;
+    --padding-padrão: 40px;
+    --padding-padrǜo: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --padding-padrao: 20px;
+    --padding-padrão: 20px;
+    --padding-padrǜo: 20px;
+  }
 }
