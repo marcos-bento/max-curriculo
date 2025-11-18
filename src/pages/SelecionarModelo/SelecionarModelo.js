@@ -6,6 +6,7 @@
   import modelo1 from "../../assets/img/modelo1.png";
   import modelo2 from "../../assets/img/modelo2.png";
   import modelo3 from "../../assets/img/modelo3.png";
+  import modelo4 from "../../assets/img/modelo4.png";
   import './SelecionarModelo.css';
   import Titulo from '../../components/Titulo/Titulo';
 
@@ -43,7 +44,12 @@
 
             <div className="modelo-card" onClick={() => selecionarModelo("modelo3")}>
               <img src={modelo3} alt="Modelo 3" />
-              <p>Modelo Vermelho com Imagem</p>
+              <p>Modelo Vermelho com Imagem (INCOMPLETO)</p>
+            </div>
+
+            <div className="modelo-card" onClick={() => selecionarModelo("modelo4")}>
+              <img src={modelo4} alt="Modelo 4" />
+              <p>Modelo Vermelho (INCOMPLETO)</p>
             </div>
           </div>
         </div>

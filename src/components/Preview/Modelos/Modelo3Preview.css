@@ -1,0 +1,194 @@
+.modelo3-wrapper {
+  box-sizing: border-box;
+  width: 794px;
+  margin: 40px auto;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  font-family: "Helvetica", "Arial", sans-serif;
+  color: #1e1e1e;
+}
+
+.modelo3-header {
+  padding: 32px 40px 24px;
+  text-align: center;
+}
+
+.modelo3-foto {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 16px;
+  border: 3px solid #64b48c;
+  background: #f3f3f3;
+}
+
+.modelo3-foto.square {
+  border-radius: 10px;
+}
+
+.modelo3-foto.round {
+  border-radius: 50%;
+}
+
+.modelo3-nome {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2d557d;
+}
+
+.modelo3-cargo {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64b48c;
+}
+
+.modelo3-info {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #777777;
+}
+
+.modelo3-contatos {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  font-size: 10px;
+  color: #666666;
+}
+
+.modelo3-contato {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.modelo3-ico {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+}
+
+.modelo3-links {
+  margin-top: 10px;
+  font-size: 10px;
+  color: #64b48c;
+}
+
+.modelo3-divider {
+  margin: 18px auto 0;
+  width: 70%;
+  height: 2px;
+  background: #64b48c;
+  border-radius: 999px;
+}
+
+.modelo3-body {
+  padding: 24px 40px 32px;
+}
+
+.modelo3-section {
+  margin-bottom: 20px;
+}
+
+.modelo3-section-title {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #2d557d;
+}
+
+.modelo3-section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  margin-top: 4px;
+  background: #64b48c;
+  border-radius: 999px;
+}
+
+.modelo3-texto {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #333333;
+}
+
+.modelo3-exp-item {
+  margin-top: 10px;
+}
+
+.modelo3-exp-cargo {
+  font-size: 12px;
+  font-weight: 700;
+  color: #222222;
+}
+
+.modelo3-exp-info {
+  font-size: 10px;
+  font-style: italic;
+  color: #777777;
+  margin-top: 2px;
+}
+
+.modelo3-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.modelo3-tag {
+  padding: 3px 10px;
+  font-size: 10px;
+  border-radius: 999px;
+  background: #f5f5f5;
+  border: 1px solid #e2e2e2;
+}
+
+.modelo3-cert-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 6px 0 0;
+}
+
+.modelo3-cert-item {
+  position: relative;
+  padding-left: 14px;
+  margin: 4px 0;
+  font-size: 11px;
+  color: #333333;
+}
+
+.modelo3-cert-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #64b48c;
+}
+
+@media (max-width: 1024px) {
+  .modelo3-wrapper {
+    width: 100%;
+    margin: 24px auto;
+  }
+
+  .modelo3-header {
+    padding: 24px 20px 20px;
+  }
+
+  .modelo3-body {
+    padding: 20px 20px 24px;
+  }
+}

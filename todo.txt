@@ -38,5 +38,12 @@ Ajustar a imagem pois está saindo no currículo toda bugada completamente ileg�
 
 Geral:
 Adaptar todo código para Mobile:
-Modificar o tamanho de todos os Previews para que caiba na tela e não vaze em tamanhos Mobile.
-Modificar o Banner da Home para que em tamanhos Mobile ele apareça cada elemento em cima do outro.
+Modificar o tamanho de todos os Previews para que caiba na tela e não vaze em tamanhos Mobile. (Feito)
+Modificar o Banner da Home para que em tamanhos Mobile ele apareça cada elemento em cima do outro. (Feito)
+
+=========================================================================
+
+Modelo 3 e 4:
+
+Aumentar os espaços entre o nome e os próximos títulos na geração do PDF
+Adicionar o Preview no Form.js

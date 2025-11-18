@@ -13,6 +13,8 @@ import { toast } from 'react-toastify';
 import Modelo0Preview from '../../components/Preview/Modelos/Modelo0Preview';
 import Modelo1Preview from '../../components/Preview/Modelos/Modelo1Preview';
 import Modelo2Preview from '../../components/Preview/Modelos/Modelo2Preview';
+import Modelo3Preview from '../../components/Preview/Modelos/Modelo3Preview';
+import Modelo4Preview from '../../components/Preview/Modelos/Modelo4Preview';
 
 function Form() {
   const [modeloSelecionado, setModeloSelecionado] = React.useState("modelo0");
@@ -116,7 +118,7 @@ function Form() {
           <InputTexto label="Endereço" name="cidade" register={register} required />
           <InputTexto label="Cargo desejado" name="cargo" register={register} required />
           <InputTexto label="Descrição profissional" name="descricao" register={register} />
-          {modeloSelecionado === "modelo2" && (
+          {(modeloSelecionado === "modelo2" || modeloSelecionado === "modelo3") && (
             <>
               <InputTexto label="Idade ou Data de Nascimento (opcional)" name="idade" register={register} />
               <InputTexto label="Estado Civil (opcional)" name="estadoCivil" register={register} />
