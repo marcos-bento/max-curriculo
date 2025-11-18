@@ -33,3 +33,10 @@ Dar opção de Sem Foto ou Com Foto no Form e não no preview (Feito)
 Dar opção de foto quadrada ou redonda no Form e não no preview (Feito)
 Adicionar um botão para grar curriculo também abaixo da prévia Identico ao botão acima do preview (Feito)
 Ajustar a imagem pois está saindo no currículo toda bugada completamente ilegível. No Preview sai perfeito. (Feito)
+
+==========================================================================
+
+Geral:
+Adaptar todo código para Mobile:
+Modificar o tamanho de todos os Previews para que caiba na tela e não vaze em tamanhos Mobile.
+Modificar o Banner da Home para que em tamanhos Mobile ele apareça cada elemento em cima do outro.

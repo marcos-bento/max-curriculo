@@ -91,7 +91,8 @@
   .banner-item.grande,
   .banner-item.pequeno.top,
   .banner-item.pequeno.bottom {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .banner-item-texto,
@@ -110,6 +111,7 @@
   .banner-container {
     padding: 40px var(--padding-padrao);
     gap: 20px;
+    align-items: center;
   }
 
   .banner-item {

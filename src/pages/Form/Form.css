@@ -71,9 +71,11 @@
 }
 
 .preview-container {
+  box-sizing: border-box;
   padding: 40px var(--padding-padrao);
   border-top: 1px solid #ddd;
-  width: min(1000px, 100%);
+  width: 100%;
+  max-width: 1000px;
   margin: auto;
   overflow-x: auto;
 }
@@ -216,6 +218,6 @@
   }
 
   .btn-gerar-curriculo {
-    width: 100%;
+    width: 80%;
   }
 }
